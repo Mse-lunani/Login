@@ -12,9 +12,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +26,7 @@ import android.widget.EditText;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity  {
+public class LoginActivity extends Activity {
 
     public void OnLogin(View view) {
         String username = Email.getText().toString();
@@ -114,11 +117,13 @@ public class LoginActivity extends AppCompatActivity  {
 
         @Override
         protected void onPostExecute(String result) {
-            alertDialog.setMessage(result);
-            alertDialog.show();
+            //alertDialog.setMessage(result);
+            //alertDialog.show();
+            Intent dd= new Intent(LoginActivity.this, StartActivity.class);
+            startActivity(dd);
         }
 
-        @Override
+
         protected void onProgressUpdate(Void... values) {
             super.onProgressUpdate(values);
         }
